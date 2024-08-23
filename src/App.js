@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React, {  useState } from 'react';
 import './App.css';
+const App = () => {
+  const [count, setCount] = useState(0);
 
-function App() {
+  const incCount = () => {
+    setCount(count + 1);
+  };
+  function solve(count){
+    return count-1;
+  }
+  const decrCount = () => {
+    if(count>0){
+      setCount(count =>solve(count));
+    }else{
+      alert("Count cannot go below 0");
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Hello, Everyone</h1>
+      <div className="card">
+        <p>{count}</p>
+        <div className='btn'>
+          <button onClick={incCount}>Increment</button>
+        <button onClick={decrCount}>Decrement</button>
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default App;
